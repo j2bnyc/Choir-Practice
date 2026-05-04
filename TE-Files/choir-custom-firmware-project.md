@@ -544,3 +544,31 @@ Songs are generated using an algorithm based on **counterpoint melody** — inde
 - Exhaustively probed CDC-ACM serial port: no response at any baud rate or protocol
 - Confirmed .tfw cannot be decrypted without SWD access to bootloader
 - Ordered J-Link EDU Mini
+
+### 2026-03-24: USB Disk Image Analysis — Song Data Discovery
+
+- J-Link EDU Mini arrived, confirmed recognized by macOS (SEGGER, S/N 802006819, firmware V2)
+- J-Link not yet physically connected to CH-8 SWD pads (VTref=0.000V as expected)
+- Connected Miki (not Giesela) via USB-C — mounted at `/Volumes/MIKI`
+- Miki version info: CH-8, variant Miki, firmware 1.1.3+0, serial S1DPQ24C, PCBA 830000683240301199
+- Dumped raw 1 MB FAT12 disk image: `dumps/miki_usb_disk.img` (1,016,320 bytes, 1985 sectors)
+- **MAJOR DISCOVERY:** Found 9 MIDI files with 53 tracks in unallocated disk space
+- Song data format confirmed as **standard MIDI format 1** with these parameters:
+  - 6 tracks per song (likely 6 voice parts for counterpoint)
+  - 192 ticks per quarter note
+  - Note events on MIDI channel 4 (0x94 = note-on)
+  - Phoneme data embedded as MIDI Lyric meta-events (FF 05)
+  - Phoneme format: `consonant:vowel:modifier` (e.g., `kro:o:n`, `blu:u:t`, `sme:r`, `ho:o:x`)
+  - Some phonemes appear to be German/Nordic words matching the repertoire
+- MIDI files are fragmented across non-contiguous sectors (FAT12 scatter)
+- Only first 2 tracks of each song are contiguously readable; remaining tracks scattered
+- Numeric parameters found: `5,54,534` / `1,14,124` / `1,14,154` — purpose TBD
+- Also found: `stepss`, `stAtss` — possibly synthesis control commands
+- This data was likely written during factory programming and left in unallocated space
+
+**Key implications:**
+1. Songs are standard MIDI — the companion app can generate compatible files directly
+2. Phoneme system uses text-based lyric events, not binary CC values
+3. The firmware contains a MIDI parser and maps lyric events to the synthesis engine
+4. 6 voice parts per song confirms the counterpoint architecture
+5. We may be able to upload new songs by writing properly formatted MIDI to the USB drive

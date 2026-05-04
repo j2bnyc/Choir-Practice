@@ -1,0 +1,9 @@
+si SWD
+speed 4000
+device NRF52840_XXAA
+connect
+sleep 500
+savebin dumps/ch8_flash_dump.bin 0x00000000 0x100000
+sleep 500
+savebin dumps/ch8_uicr.bin 0x10001000 0x1000
+q
