@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Toggle Network Mode",
+  "version": "1.0.0",
+  "description": "Manually run to toggle MCP servers based on current network. Use when switching between home and remote, or if auto-detection needs a nudge.",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "bash scripts/kiro-network-aware.sh",
+    "timeout": 10
+  }
+}

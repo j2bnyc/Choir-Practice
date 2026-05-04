@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "philips-hue": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-philips-hue"
+      ],
+      "env": {
+        "HUE_BRIDGE_IP": "192.168.1.41",
+        "HUE_API_KEY": "ifLw8-HAbGnOlGyy0EVL8eRSjwzUz5x8eWrxyXxv"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "get_lights",
+        "set_brightness",
+        "set_color",
+        "toggle_light"
+      ]
+    },
+    "ollama": {
+      "command": "uvx",
+      "args": [
+        "mcp-ollama"
+      ],
+      "env": {
+        "OLLAMA_HOST": "http://192.168.1.31:11434"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "git": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "."
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "git_status",
+        "git_log",
+        "git_branch",
+        "git_add",
+        "git_commit"
+      ]
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  // === Editor Core ===
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.rulers": [100],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  // === Terminal ===
+  "terminal.integrated.scrollback": 10000,
+
+  // === Files ===
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    ".DS_Store": true
+  },
+
+  // === File Associations ===
+  "files.associations": {
+    "*.yaml": "home-assistant",
+    "*.yml": "home-assistant",
+    "secrets.yaml": "yaml",
+    "compose.yml": "yaml",
+    "compose.yaml": "yaml",
+    "compose.*.yml": "yaml",
+    "compose.*.yaml": "yaml",
+    "docker-compose.yml": "yaml",
+    "docker-compose.yaml": "yaml",
+    "docker-compose.*.yml": "yaml",
+    "docker-compose.*.yaml": "yaml",
+    "esphome/**/*.yml": "esphome",
+    "esphome/**/*.yaml": "esphome",
+    ".env*": "dotenv"
+  },
+
+  // === Language-Specific Formatters ===
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.tabSize": 4
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.autoIndent": "advanced"
+  },
+  "[home-assistant]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jinja-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  // === YAML Specific ===
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+  },
+  "yaml.customTags": [
+    "!include_dir_named",
+    "!include_dir_list",
+    "!include_dir_merge_named",
+    "!include_dir_merge_list",
+    "!include",
+    "!secret",
+    "!env_var",
+    "!input",
+    "!lambda"
+  ],
+
+  // === Search ===
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/__pycache__": true,
+    "**/home-assistant.log*": true,
+  }
+}

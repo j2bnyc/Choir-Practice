@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+._*
+
+# Ghidra project files (large, local-only)
+*.rep/
+*.lock
+*.lock~
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# nRF build artifacts
+build/
+_build/
+
+# IDE
+.vscode/
+*.swp
+*.swo

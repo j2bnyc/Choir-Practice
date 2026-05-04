@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "YAML Lint on Save",
+  "version": "1.0.0",
+  "description": "Validates YAML syntax when automation or script files are saved. Limited to HA config files only, not all YAML.",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "automations.yaml",
+      "automations/*.yaml",
+      "scripts/*.yaml",
+      "configuration.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Quickly validate the YAML syntax of the edited file. Check for tabs, broken indentation, and unclosed quotes. Report issues if found. If valid, say nothing and move on — do NOT edit any files."
+  }
+}
